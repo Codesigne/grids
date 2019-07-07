@@ -1,0 +1,107 @@
+:root {
+    font-size: 1rem;
+    // font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])))
+    // --fontsize:calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(4vmin + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+body {
+    line-height: 1;
+    color: hsla(0, 0%, 90%, 1);
+}
+
+.container--1 {
+    display: grid;
+    grid-template-columns: repeat(4, 4rem);
+    // grid-template-rows: [r1] 4rem [r2 row2] 2rem [r3] 1rem;
+    grid-template-rows: repeat(5, auto);
+    grid-template-areas: // 
+    ". . . minus " //
+    ". . . add " //
+    ". . . . " //
+    ". . . enter" //
+    "zero . . .";
+    // grid-template: // 
+    // [r0] "minus minus minus minus" 4rem [r1]//
+    // [r1] ". . . add " auto [r2]//
+    // [r2] ". . . enter "auto [r3]//
+    // [r3] ". . . ." auto [r4]//
+    // [r4] "add  add  add  add" auto [r5]/  repeat(4, 4rem)
+    
+    // ;
+    // ------------------------
+    grid-column-gap: .1rem;
+    grid-row-gap: .1rem;
+    grid-gap: .1rem;
+    // ------------------------
+    justify-items: center; //[stretch ]
+    align-items: center; //[stretch ]
+    place-items: stretch;
+    // ------------------------
+    justify-content: end;
+    align-content: center;
+    place-content: center;
+    // ------------------------
+ 
+}
+
+.key {
+
+  $rad:.2rem;
+    min-width: 3rem;
+    min-height: 2rem;
+    border-radius: $rad;
+    background: hsla(0, 0%, 45%, .8);
+    border: solid 1px;
+    border-color: hsla(0, 0%, 40%, 1);
+    position: relative;
+    // &--5 {
+    //     // grid-row-start: r1 ;//2;
+    //     grid-column-start: 1;
+    //     // grid-column-end: 3;
+    //     // grid-row-start: 1;
+    //     // grid-row-end: 3;
+    // }
+    &:after{
+      content: " ";
+      display: inline-block;
+      width: calc(100% - .2rem);
+      height: 85%;
+      position: absolute;
+      background: hsla(0, 0%, 80%, .2);
+      left: .1rem;
+      top: .1rem;
+      border-radius: $rad - .1rem;
+    }
+    &--add {
+        grid-area: add;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+    &--enter{
+      grid-area: enter;
+      grid-row-start: 4;
+      grid-row-end: 6;
+    }
+    &--zero{
+      grid-area: zero;
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+    }
+    &--minus {
+        grid-area: minus;
+    }
+    // &--multi {
+    //     grid-area: multi;
+    // }
+    // &--divide {
+    //     grid-area: divide;
+    // }
+    // &--dot {
+    //     grid-area: dot;
+    // }
+    // &--lock {
+    //     grid-area: lock;
+    // }
+}
